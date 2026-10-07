@@ -7,9 +7,6 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com">
   <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;600;700&family=Tiro+Bangla:ital@0;1&display=swap" rel="stylesheet">
-  
-  <!-- Cloudflare Turnstile API -->
-  <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
 
   <style>
     * {
@@ -183,49 +180,6 @@
     }
     input:checked + .slider:before {
       transform: translateX(20px);
-    }
-
-    /* Cloudflare Turnstile Modal (Always English) */
-    .sec-overlay {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: #120303;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      z-index: 9999;
-      padding: 16px;
-    }
-    .sec-card {
-      background: #2b0808;
-      border: 2px solid #ffd700;
-      border-radius: 18px;
-      padding: 26px 20px;
-      max-width: 380px;
-      width: 100%;
-      text-align: center;
-      box-shadow: 0 10px 30px rgba(0,0,0,0.9);
-    }
-    .sec-title {
-      font-size: 20px;
-      color: #ffd700;
-      font-weight: 700;
-      margin-bottom: 8px;
-    }
-    .sec-sub {
-      font-size: 13px;
-      color: #fed7aa;
-      margin-bottom: 20px;
-      line-height: 1.5;
-    }
-    .cf-box-wrapper {
-      display: flex;
-      justify-content: center;
-      margin: 15px 0 10px;
-      min-height: 65px;
     }
 
     /* Main Container & Header */
@@ -651,18 +605,6 @@
     </div>
   </div>
 
-  <!-- Cloudflare Turnstile Modal (Fixed English) -->
-  <div class="sec-overlay" id="sec-modal">
-    <div class="sec-card">
-      <div class="sec-title" id="txt-sec-title">Cloudflare Security</div>
-      <div class="sec-sub" id="txt-sec-sub">Verifying you are human... This ensures bot protection.</div>
-      <div class="cf-box-wrapper">
-        <div class="cf-turnstile" data-sitekey="1x00000000000000000000AA" data-callback="onTurnstileSuccess" data-theme="dark"></div>
-      </div>
-      <div id="cf-status" style="font-size: 12.5px; color: #facc15; margin-top: 8px;">Verifying...</div>
-    </div>
-  </div>
-
   <!-- Floating Buttons -->
   <div class="floating-stack" id="floating-stack">
     <div class="fl-btn btn-comment" onclick="openCommentModal()">
@@ -720,4 +662,44 @@
       <button class="cmt-submit" id="txt-cmt-submit" onclick="addComment()">মন্তব্য পোস্ট করুন</button>
 
       <div class="cmt-list" id="cmt-list-container"></div>
-      <button class="btn-close" style="margin-top: 15px;" onclick="clos
+      <button class="btn-close" style="margin-top: 15px;" onclick="closeCommentModal()">বন্ধ করুন</button>
+    </div>
+  </div>
+
+  <!-- Main Container -->
+  <div class="container" id="main-container">
+    <div class="header-box">
+      <h1 id="txt-header-title">শুভ শারদীয়া</h1>
+      <img src="bp.jpg" alt="Maa Durga" class="main-img">
+    </div>
+
+    <div class="card">
+      <div class="timer-title" id="display-year-title">মা আসতে বাকি (২০২৬)</div>
+      <div class="timer-subtitle" id="display-date-subtitle">১০ অক্টোবর ২০২৬, ভোর ৪ টা (মহালয়া)</div>
+      <div class="timer-grid">
+        <div class="time-box">
+          <span class="time-val" id="days">০</span>
+          <span class="time-label" id="lbl-days">দিন</span>
+        </div>
+        <div class="time-box">
+          <span class="time-val" id="hours">০</span>
+          <span class="time-label" id="lbl-hours">ঘণ্টা</span>
+        </div>
+        <div class="time-box">
+          <span class="time-val" id="mins">০</span>
+          <span class="time-label" id="lbl-mins">মিনিট</span>
+        </div>
+        <div class="time-box">
+          <span class="time-val" id="secs">০</span>
+          <span class="time-label" id="lbl-secs">সেকেন্ড</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="section-title" id="txt-pandal-title">কলকাতার সেরা ১০টি দুর্গাপূজা</div>
+
+    <div class="pandal-card">
+      <div class="pandal-name">১. শ্রীভূমি স্পোর্টিং ক্লাব</div>
+      <div class="pandal-loc" id="p1-loc">অবস্থান: লেক টাউন, ভিআইপি রোড।</div>
+      <div class="pandal-theme" id="p1-thm">এই বছরের থিম: রাজকীয় প্রাসাদের আদলে মণ্ডপ ও চন্দননগরের বিশেষ আলোকসজ্জা।</div>
+      <div class="pandal-desc" id="p1-dsc">বিবরণ: শ্রীভূমির পুজো প্রতি বছরই তাদের চোখধাঁধানো বিশাল বাজেট, সুবিশা
