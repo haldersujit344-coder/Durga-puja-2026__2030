@@ -1,0 +1,723 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Durga Puja 2026-2030</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;600;700&family=Tiro+Bangla:ital@0;1&display=swap" rel="stylesheet">
+  
+  <!-- Cloudflare Turnstile API -->
+  <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Hind Siliguri', sans-serif;
+    }
+    body {
+      background: radial-gradient(circle at top, #7f1d1d 0%, #450a0a 60%, #170404 100%);
+      background-color: #7f1d1d;
+      color: #ffffff;
+      min-height: 100vh;
+      padding: 40px 14px 110px;
+      text-align: center;
+    }
+    .container {
+      max-width: 600px;
+      margin: 0 auto;
+      transition: opacity 0.3s ease;
+    }
+
+    /* Top Left Hamburger */
+    .menu-btn {
+      position: fixed;
+      top: 15px;
+      left: 15px;
+      width: 44px;
+      height: 44px;
+      background: rgba(20, 4, 4, 0.9);
+      border: 1.5px solid #ffd700;
+      border-radius: 8px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      gap: 5px;
+      cursor: pointer;
+      z-index: 5000;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.6);
+    }
+    .menu-bar {
+      width: 22px;
+      height: 2.5px;
+      background-color: #ffd700;
+      border-radius: 2px;
+    }
+    .unhide-btn {
+      position: fixed;
+      top: 15px;
+      left: 15px;
+      width: 44px;
+      height: 44px;
+      background: rgba(20, 4, 4, 0.9);
+      border: 1.5px solid #ffd700;
+      border-radius: 8px;
+      color: #ffd700;
+      font-size: 22px;
+      font-weight: 700;
+      cursor: pointer;
+      z-index: 5000;
+      display: none;
+      align-items: center;
+      justify-content: center;
+    }
+
+    /* Settings Drawer */
+    .drawer-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.7);
+      display: none;
+      z-index: 6000;
+    }
+    .drawer {
+      position: fixed;
+      top: 0;
+      left: -290px;
+      width: 280px;
+      height: 100%;
+      background: #1c0505;
+      border-right: 2px solid #ffd700;
+      z-index: 6001;
+      transition: left 0.3s ease;
+      padding: 24px 18px;
+      text-align: left;
+      box-shadow: 5px 0 20px rgba(0,0,0,0.8);
+      overflow-y: auto;
+    }
+    .drawer.open {
+      left: 0;
+    }
+    .drawer-title {
+      font-size: 20px;
+      font-weight: 700;
+      color: #ffd700;
+      border-bottom: 1px solid rgba(255, 215, 0, 0.3);
+      padding-bottom: 10px;
+      margin-bottom: 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .drawer-close {
+      background: none;
+      border: none;
+      color: #fff;
+      font-size: 20px;
+      cursor: pointer;
+    }
+    .setting-group {
+      margin-bottom: 22px;
+    }
+    .setting-label {
+      font-size: 14px;
+      color: #fed7aa;
+      font-weight: 600;
+      margin-bottom: 8px;
+      display: block;
+    }
+    .setting-select {
+      width: 100%;
+      padding: 8px 10px;
+      background: #100202;
+      border: 1px solid #ffd700;
+      color: #fff;
+      border-radius: 6px;
+      outline: none;
+      font-size: 14px;
+    }
+    .toggle-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .switch {
+      position: relative;
+      display: inline-block;
+      width: 44px;
+      height: 24px;
+    }
+    .switch input {
+      opacity: 0;
+      width: 0;
+      height: 0;
+    }
+    .slider {
+      position: absolute;
+      cursor: pointer;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background-color: #374151;
+      border-radius: 24px;
+      transition: .3s;
+    }
+    .slider:before {
+      position: absolute;
+      content: "";
+      height: 18px;
+      width: 18px;
+      left: 3px;
+      bottom: 3px;
+      background-color: white;
+      border-radius: 50%;
+      transition: .3s;
+    }
+    input:checked + .slider {
+      background-color: #b91c1c;
+    }
+    input:checked + .slider:before {
+      transform: translateX(20px);
+    }
+
+    /* Cloudflare Turnstile Modal (Always English) */
+    .sec-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: #120303;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 9999;
+      padding: 16px;
+    }
+    .sec-card {
+      background: #2b0808;
+      border: 2px solid #ffd700;
+      border-radius: 18px;
+      padding: 26px 20px;
+      max-width: 380px;
+      width: 100%;
+      text-align: center;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.9);
+    }
+    .sec-title {
+      font-size: 20px;
+      color: #ffd700;
+      font-weight: 700;
+      margin-bottom: 8px;
+    }
+    .sec-sub {
+      font-size: 13px;
+      color: #fed7aa;
+      margin-bottom: 20px;
+      line-height: 1.5;
+    }
+    .cf-box-wrapper {
+      display: flex;
+      justify-content: center;
+      margin: 15px 0 10px;
+      min-height: 65px;
+    }
+
+    /* Main Container & Header */
+    .header-box {
+      background: rgba(0, 0, 0, 0.45);
+      border: 1px solid rgba(255, 215, 0, 0.5);
+      border-radius: 16px;
+      padding: 18px 12px;
+      margin-bottom: 22px;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.6);
+    }
+    h1 {
+      font-family: 'Tiro Bangla', serif;
+      color: #ffd700;
+      font-size: 46px;
+      font-weight: 700;
+      letter-spacing: 2px;
+      margin-bottom: 14px;
+      text-shadow: 0 4px 15px rgba(0, 0, 0, 0.9);
+    }
+    .main-img {
+      width: 100%;
+      max-height: 380px;
+      object-fit: cover;
+      border-radius: 12px;
+      border: 2px solid #ffd700;
+      display: block;
+      margin: 0 auto;
+    }
+    .card {
+      background: rgba(30, 8, 8, 0.9);
+      border: 1px solid rgba(255, 69, 0, 0.45);
+      border-radius: 16px;
+      padding: 24px 18px;
+      margin-bottom: 25px;
+    }
+    .timer-title {
+      font-size: 22px;
+      color: #facc15;
+      margin-bottom: 6px;
+      font-weight: 700;
+    }
+    .timer-subtitle {
+      font-size: 13px;
+      color: #fed7aa;
+      margin-bottom: 16px;
+    }
+    .timer-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 10px;
+      margin: 15px 0 5px;
+    }
+    .time-box {
+      background: rgba(185, 28, 28, 0.4);
+      border: 1px solid rgba(255, 215, 0, 0.4);
+      padding: 12px 4px;
+      border-radius: 10px;
+    }
+    .time-val {
+      font-size: 24px;
+      font-weight: 700;
+      color: #fef08a;
+      display: block;
+    }
+    .time-label {
+      font-size: 13px;
+      color: #ffedd5;
+    }
+
+    /* Floating Stack with Deep Red Ring */
+    .floating-stack {
+      position: fixed;
+      bottom: 24px;
+      right: 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      z-index: 2000;
+      transition: opacity 0.3s ease;
+    }
+    .fl-btn {
+      width: 56px;
+      height: 56px;
+      border-radius: 50%;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 6px 20px rgba(0,0,0,0.6);
+      transition: transform 0.15s ease;
+    }
+    .fl-btn:active {
+      transform: scale(0.92);
+    }
+    .btn-comment {
+      background: linear-gradient(135deg, #b91c1c, #7f1d1d);
+      border: 2.5px solid #ef4444;
+      box-shadow: 0 0 12px rgba(239, 68, 68, 0.55);
+    }
+    .btn-chandi {
+      background: linear-gradient(135deg, #9333ea, #c026d3);
+      border: 2px solid #ffd700;
+    }
+    .btn-dhak {
+      background: linear-gradient(135deg, #b91c1c, #d97706);
+      width: 62px;
+      height: 62px;
+      border: 2px solid #ffd700;
+    }
+    .fl-btn svg {
+      width: 28px;
+      height: 28px;
+      fill: #ffffff;
+    }
+
+    /* Modals */
+    .modal-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.85);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      z-index: 3000;
+      padding: 16px;
+    }
+    .modal-content {
+      background: #240606;
+      border: 2px solid #ffd700;
+      border-radius: 18px;
+      max-width: 480px;
+      width: 100%;
+      padding: 20px;
+      text-align: center;
+      max-height: 90vh;
+      overflow-y: auto;
+    }
+    .modal-title {
+      font-size: 20px;
+      color: #ffd700;
+      font-weight: 700;
+      margin-bottom: 8px;
+    }
+    .modal-img {
+      width: 100%;
+      max-height: 220px;
+      object-fit: cover;
+      border-radius: 10px;
+      border: 1px solid rgba(255, 215, 0, 0.4);
+      margin-bottom: 12px;
+    }
+    .btn-close {
+      background: #374151;
+      color: #fff;
+      border: 1px solid #9ca3af;
+      padding: 8px 18px;
+      border-radius: 20px;
+      font-weight: 600;
+      cursor: pointer;
+    }
+    .sec-btn {
+      background: #b91c1c;
+      color: #fff;
+      border: 1px solid #ffd700;
+      padding: 8px 18px;
+      border-radius: 20px;
+      font-weight: 700;
+      font-size: 14px;
+      cursor: pointer;
+    }
+
+    /* Red Themed Comment Modal */
+    .modal-content-comment {
+      border: 2px solid #ef4444;
+      box-shadow: 0 0 25px rgba(239, 68, 68, 0.4);
+    }
+    .cmt-box-header {
+      text-align: left;
+      font-size: 15px;
+      color: #fed7aa;
+      margin-bottom: 12px;
+      border-bottom: 1px solid rgba(239, 68, 68, 0.4);
+      padding-bottom: 6px;
+      display: flex;
+      justify-content: space-between;
+    }
+    .cmt-input, .cmt-text {
+      width: 100%;
+      background: #140404;
+      border: 1px solid #7f1d1d;
+      border-bottom: 2px solid #ef4444;
+      padding: 8px 12px;
+      color: #fff;
+      margin-bottom: 8px;
+      font-size: 13.5px;
+      outline: none;
+      border-radius: 6px;
+    }
+    .cmt-submit {
+      background: #b91c1c;
+      color: #fff;
+      border: 1px solid #ef4444;
+      padding: 8px 18px;
+      border-radius: 20px;
+      font-weight: 700;
+      cursor: pointer;
+      width: 100%;
+    }
+    .cmt-list {
+      margin-top: 15px;
+      max-height: 280px;
+      overflow-y: auto;
+      text-align: left;
+    }
+    .cmt-item {
+      background: rgba(30, 5, 5, 0.95);
+      border-left: 3px solid #ef4444;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+      padding: 10px;
+      margin-bottom: 10px;
+      border-radius: 8px;
+    }
+    .cmt-pinned {
+      border: 1.5px solid #ffd700;
+      background: rgba(60, 10, 10, 0.95);
+    }
+    .pinned-tag {
+      font-size: 11px;
+      color: #ffd700;
+      font-weight: 700;
+      margin-bottom: 4px;
+      display: block;
+    }
+    .cmt-author {
+      font-weight: 700;
+      color: #facc15;
+      font-size: 13.5px;
+    }
+    .admin-badge {
+      background: #ef4444;
+      color: #ffffff;
+      font-size: 10px;
+      font-weight: 800;
+      padding: 2px 6px;
+      border-radius: 8px;
+      margin-left: 5px;
+      border: 1px solid #ffd700;
+    }
+    .cmt-body {
+      margin: 5px 0 8px;
+      color: #f1f5f9;
+      font-size: 13.5px;
+      line-height: 1.4;
+      white-space: pre-wrap;
+    }
+    .cmt-actions {
+      display: flex;
+      gap: 12px;
+      align-items: center;
+      font-size: 12px;
+      color: #cbd5e1;
+    }
+    .action-btn {
+      background: none;
+      border: none;
+      color: #cbd5e1;
+      cursor: pointer;
+      font-size: 12px;
+      display: inline-flex;
+      align-items: center;
+      gap: 3px;
+    }
+    .reply-thread {
+      margin-top: 8px;
+      padding-left: 12px;
+      border-left: 2px solid rgba(239, 68, 68, 0.4);
+    }
+    .reply-item {
+      background: rgba(0, 0, 0, 0.3);
+      padding: 6px 8px;
+      border-radius: 6px;
+      margin-top: 6px;
+      font-size: 12.5px;
+    }
+
+    /* Pandal cards */
+    .section-title {
+      font-size: 21px;
+      color: #ffd700;
+      margin: 30px 0 18px;
+      font-weight: 700;
+    }
+    .pandal-card {
+      background: rgba(28, 6, 6, 0.95);
+      border-left: 4px solid #ef4444;
+      border-radius: 12px;
+      padding: 16px;
+      margin-bottom: 16px;
+      text-align: left;
+    }
+    .pandal-name {
+      font-size: 17px;
+      font-weight: 700;
+      color: #fef08a;
+      margin-bottom: 6px;
+    }
+    .pandal-loc {
+      font-size: 13.5px;
+      color: #cbd5e1;
+      margin-bottom: 5px;
+    }
+    .pandal-theme {
+      font-size: 14px;
+      font-weight: 600;
+      color: #fdba74;
+      margin-bottom: 8px;
+    }
+    .pandal-desc {
+      font-size: 13px;
+      line-height: 1.6;
+      color: #f1f5f9;
+      margin-bottom: 12px;
+    }
+    .map-link {
+      display: inline-block;
+      background: #b91c1c;
+      color: #ffffff;
+      text-decoration: none;
+      font-size: 12.5px;
+      padding: 6px 14px;
+      border-radius: 6px;
+      font-weight: 600;
+      border: 1px solid rgba(255, 215, 0, 0.4);
+    }
+    .visitor-card {
+      margin-top: 35px;
+      padding: 16px 20px;
+      background: rgba(0, 0, 0, 0.55);
+      border: 1px solid rgba(255, 215, 0, 0.4);
+      border-radius: 14px;
+      display: inline-block;
+    }
+    .visitor-text {
+      font-size: 14px;
+      color: #fcd34d;
+      margin-bottom: 6px;
+      font-weight: 600;
+    }
+    .visitor-count {
+      font-size: 26px;
+      font-weight: 800;
+      color: #ffffff;
+      letter-spacing: 2px;
+      background: rgba(185, 28, 28, 0.6);
+      padding: 4px 14px;
+      border-radius: 8px;
+      border: 1px solid #ffd700;
+      display: inline-block;
+    }
+  </style>
+</head>
+<body>
+
+  <audio id="dhak-audio" preload="auto">
+    <source src="dhak.mp3" type="audio/mpeg">
+  </audio>
+  <audio id="chandi-audio" preload="auto">
+    <source src="chandi.mp3" type="audio/mpeg">
+  </audio>
+
+  <!-- Hamburger Menu Button -->
+  <div class="menu-btn" id="menu-btn" onclick="openDrawer()">
+    <div class="menu-bar"></div>
+    <div class="menu-bar"></div>
+    <div class="menu-bar"></div>
+  </div>
+
+  <!-- Unhide Button (Cross) -->
+  <div class="unhide-btn" id="unhide-btn" onclick="toggleHideUI(false)">X</div>
+
+  <!-- Settings Drawer Overlay -->
+  <div class="drawer-overlay" id="drawer-overlay" onclick="closeDrawer()"></div>
+
+  <!-- Settings Drawer -->
+  <div class="drawer" id="drawer">
+    <div class="drawer-title">
+      <span id="txt-drawer-title">সেটিংস</span>
+      <button class="drawer-close" onclick="closeDrawer()">X</button>
+    </div>
+
+    <div class="setting-group">
+      <label class="setting-label" id="txt-year-label">বছর নির্বাচন করুন</label>
+      <select class="setting-select" id="year-select" onchange="onYearSelectChange(this.value)">
+        <option value="2026">2026</option>
+        <option value="2027">2027</option>
+        <option value="2028">2028</option>
+        <option value="2029">2029</option>
+        <option value="2030">2030</option>
+      </select>
+    </div>
+
+    <div class="setting-group">
+      <label class="setting-label" id="txt-lang-label">ভাষা নির্বাচন করুন</label>
+      <select class="setting-select" id="lang-select" onchange="changeLanguage(this.value)">
+        <option value="bn">Bengali</option>
+        <option value="en">English</option>
+        <option value="hi">Hindi</option>
+      </select>
+    </div>
+
+    <div class="setting-group">
+      <div class="toggle-row">
+        <label class="setting-label" style="margin-bottom:0;" id="txt-hideui-label">ইউআই লুকান (Hide UI)</label>
+        <label class="switch">
+          <input type="checkbox" id="hide-ui-chk" onchange="toggleHideUI(this.checked)">
+          <span class="slider"></span>
+        </label>
+      </div>
+    </div>
+  </div>
+
+  <!-- Cloudflare Turnstile Modal (Fixed English) -->
+  <div class="sec-overlay" id="sec-modal">
+    <div class="sec-card">
+      <div class="sec-title" id="txt-sec-title">Cloudflare Security</div>
+      <div class="sec-sub" id="txt-sec-sub">Verifying you are human... This ensures bot protection.</div>
+      <div class="cf-box-wrapper">
+        <div class="cf-turnstile" data-sitekey="1x00000000000000000000AA" data-callback="onTurnstileSuccess" data-theme="dark"></div>
+      </div>
+      <div id="cf-status" style="font-size: 12.5px; color: #facc15; margin-top: 8px;">Verifying...</div>
+    </div>
+  </div>
+
+  <!-- Floating Buttons -->
+  <div class="floating-stack" id="floating-stack">
+    <div class="fl-btn btn-comment" onclick="openCommentModal()">
+      <svg viewBox="0 0 24 24"><path d="M20 2H4c-1.1 0-2 .9-2 2v18l4-4h14c1.1 0-2-.9-2-2V4c0-1.1-.9-2-2-2z"/></svg>
+    </div>
+    <div class="fl-btn btn-chandi" onclick="handleChandiClick()">
+      <svg viewBox="0 0 24 24"><path d="M12 3v10.55c-.59-.34-1.27-.55-2-.55-2.21 0-4 1.79-4 4s1.79 4 4 4 4-1.79 4-4V7h4V3h-6z"/></svg>
+    </div>
+    <div class="fl-btn btn-dhak" onclick="openDhakModal()">
+      <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 4.02 2 6.5v11C2 19.98 6.48 22 12 22s10-2.02 10-5.5v-11C22 4.02 17.52 2 12 2zm0 2c4.42 0 8 1.48 8 2.5S16.42 9 12 9 4 7.52 4 6.5 7.58 4 12 4zm8 13.5c0 .38-.58 1.15-2.2 1.68L13 13.8V11.1c4.02-.32 7-1.74 7-2.6v9zm-9-5.7l4.8 7.2c-1.16.27-2.45.42-3.8.42s-2.64-.15-3.8-.42l4.8-7.2zm-7 3.1V8.5c0 .86 2.98 2.28 7 2.6v2.7L4.2 19.18C2.58 18.65 2 17.88 2 17.5z"/></svg>
+    </div>
+  </div>
+
+  <!-- Dhak Popup -->
+  <div class="modal-overlay" id="dhak-modal" onclick="closeOnBg(event, 'dhak-modal')">
+    <div class="modal-content">
+      <img src="bpo.jpg" alt="Festive" class="modal-img">
+      <div class="modal-title" id="txt-dhak-title">পূজোর ঢাকের আওয়াজ</div>
+      <div style="font-size: 13.5px; color: #fca5a5; margin-bottom: 16px;" id="dhak-status">ঢাকের তাল বাজছে...</div>
+      <div style="display: flex; justify-content: center; gap: 12px;">
+        <button class="sec-btn" id="toggle-dhak-btn" onclick="toggleDhakAudio()">থামান</button>
+        <button class="btn-close" onclick="closeDhakModal()">বন্ধ করুন</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Chandi Path Modal -->
+  <div class="modal-overlay" id="chandi-modal" onclick="closeOnBg(event, 'chandi-modal')">
+    <div class="modal-content">
+      <div class="modal-title" id="txt-chandi-title">মহালয়া চণ্ডীপাঠ</div>
+      <img src="chandi.jpg" id="chandi-img" alt="মহিষাসুরমর্দিনী চণ্ডীপাঠ" class="modal-img" style="display:none;" onerror="this.src='bp.jpg'">
+      <div id="chandi-msg" style="font-size: 15px; color: #fed7aa; margin: 15px 0; line-height: 1.6;"></div>
+      <div id="chandi-controls" style="display: none; margin: 15px 0;">
+        <div style="display: flex; justify-content: center; gap: 8px; flex-wrap: wrap;">
+          <button class="sec-btn" id="btn-chandi-pause" onclick="pausePlayChandi()">Pause</button>
+          <button class="sec-btn" id="btn-chandi-stop" onclick="stopChandi()">বন্ধ করুন</button>
+          <button class="sec-btn" id="btn-chandi-speed" onclick="toggleSpeedChandi()">2x Speed</button>
+        </div>
+      </div>
+      <button class="btn-close" onclick="closeChandiModal()">ঠিক আছে</button>
+    </div>
+  </div>
+
+  <!-- Comment Box Modal -->
+  <div class="modal-overlay" id="comment-modal" onclick="closeOnBg(event, 'comment-modal')">
+    <div class="modal-content modal-content-comment">
+      <div class="cmt-box-header">
+        <span id="txt-cmt-title">শারদীয়া মন্তব্য পাতা</span>
+        <span id="cmt-total-count" style="color: #ef4444; font-weight: 700;">০ টি মন্তব্য</span>
+      </div>
+
+      <input type="text" id="cmt-name" class="cmt-input" placeholder="আপনার নাম">
+      <input type="password" id="cmt-pass" class="cmt-input" placeholder="সিক্রেট পাসকোড (এডমিন হলে লিখুন)">
+      <textarea id="cmt-msg" class="cmt-text" rows="2" placeholder="একটি সুন্দর মন্তব্য যোগ করুন..."></textarea>
+      <button class="cmt-submit" id="txt-cmt-submit" onclick="addComment()">মন্তব্য পোস্ট করুন</button>
+
+      <div class="cmt-list" id="cmt-list-container"></div>
+      <button class="btn-close" style="margin-top: 15px;" onclick="clos
